@@ -63,38 +63,42 @@ public class CartController {
     @RequestMapping(value = "/addToCart/{id}", method = RequestMethod.GET)
     public String addToCart(@PathVariable int id,HttpSession session) {
         AccountEntity accountEntity = (AccountEntity) session.getAttribute("account");
-        Cart cart = cartService.findById(accountEntity.getId());
-        Product product = productService.findById(id);
-
-        List<CartItem> cartItemList = cartItemService.findByCartId(cart.getId());
-
-        if (cartItemList.isEmpty()) {
-            CartItem cartItem = new CartItem();
-            cartItem.setProduct(product);
-
-            cartItem.setCart(cart);
-            cartItem.setQuantity(1);
-            cartItemService.save(cartItem);
+        if (accountEntity == null) {
+            return "redirect:/login";
         } else {
-            boolean cartItemCheck = false;
-            for (CartItem cartItem : cartItemList) {
-                if (product.getId() == cartItem.getProduct().getId()) {
-                    cartItemCheck = true;
-                    cartItem.setCart(cart);
-                    cartItem.setQuantity(cartItem.getQuantity() + 1);
-                    cartItemService.save(cartItem);
-                    break;
+            Cart cart = cartService.findById(accountEntity.getId());
+            Product product = productService.findById(id);
+
+            List<CartItem> cartItemList = cartItemService.findByCartId(cart.getId());
+            if (cartItemList.isEmpty()) {
+                CartItem cartItem = new CartItem();
+                cartItem.setProduct(product);
+
+                cartItem.setCart(cart);
+                cartItem.setQuantity(1);
+                cartItemService.save(cartItem);
+            } else {
+                boolean cartItemCheck = false;
+                for (CartItem cartItem : cartItemList) {
+                    if (product.getId() == cartItem.getProduct().getId()) {
+                        cartItemCheck = true;
+                        cartItem.setCart(cart);
+                        cartItem.setQuantity(cartItem.getQuantity() + 1);
+                        cartItemService.save(cartItem);
+                        break;
+                    }
+                }
+                if (cartItemCheck == false) {
+                    CartItem cartItem1 = new CartItem();
+                    cartItem1.setQuantity(1);
+                    cartItem1.setProduct(product);
+                    cartItem1.setCart(cart);
+                    cartItemService.save(cartItem1);
                 }
             }
-            if (cartItemCheck == false) {
-                CartItem cartItem1 = new CartItem();
-                cartItem1.setQuantity(1);
-                cartItem1.setProduct(product);
-                cartItem1.setCart(cart);
-                cartItemService.save(cartItem1);
-            }
+            return "redirect:/cart";
         }
-        return "redirect:/cart";
+
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
@@ -119,6 +123,7 @@ public class CartController {
         Payment payment = new Payment();
         if (payment_method.equals("COD")) {
             if (accountBankingList == null || accountBankingList.isEmpty()) {
+                model.addAttribute("accountBanking", new AccountBanking());
                 return "banking";
             } else if (accountBankingList.get(0).getBalance() < cartItemService.getAmount()) {
                 model.addAttribute("msg", "khong du tien");

@@ -30,111 +30,7 @@
 
 </head>
   <body>
-
-    <header class="header_area">
-      <div class="main_menu">
-        <div class="container">
-          <nav class="navbar navbar-expand-lg navbar-light w-100">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <a class="navbar-brand logo_h" href="/project-final-main">
-               <img src="<c:url value='/resources/css/img/logo/Logo1_tp_icon.png'/>"/>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
-              <div class="row w-100 mr-0">
-                <div class="col-lg-7 pr-0">
-                  <ul class="nav navbar-nav center_nav pull-right">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="index.html">Trang Chủ</a>
-                    </li>
-
-                    <li class="nav-item submenu dropdown">
-                      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                        aria-expanded="false">Danh Mục</a>
-                      <ul class="dropdown-menu">
-                        <li class="nav-item">
-                          <a class="nav-link" href="blog.html">Điện Thoại</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="single-blog.html">Tablet</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="single-blog.html">LapTop</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="single-blog.html">Đồng Hồ</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="nav-item submenu dropdown">
-                      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                        aria-expanded="false">Pages</a>
-                      <ul class="dropdown-menu">
-                        <li class="nav-item">
-                          <a class="nav-link" href="tracking.html">Tracking</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="elements.html">Elements</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                  </ul>
-
-                  <!--==============search================-->
-                  <!-- <form:form action="search" method="get">
-                      <div class="input-group">
-                        <input name="searchInput" type="text" class="form-control rounded" placeholder="Sản Phẩm Cần Tìm?" aria-label="Search"
-                              aria-describedby="search-addon" />
-                        <button type="submit" class="btn btn-outline-primary">Tìm Kiếm</button>
-                      </div>
-                  </form:form> -->
-                </div>
-
-                <div class="col-lg-5 pr-0">
-                  <ul class="nav navbar-nav navbar-right right_nav pull-right">
-
-                    <li class="nav-item">
-                      <a href="#" class="icons">
-                        <i class="ti-shopping-cart">Giỏ Hàng</i>
-                      </a>
-                    </li>
-
-                    <li class="nav-items">
-                        <li><a style="color: black;" href="#"><i class="fa fa-user"></i> Đăng Nhập</a></li>
-                      </a>
-                    </li>
-
-                    <li class="nav-items">
-                        <li><a style="color: black;" href="#"><i class="fa fa-user"></i> Đăng Ký</a></li>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </div>
-    </header>
-    <div class="search">
-      <form:form action="search" method="get">
-        <div class="input-group">
-            <input name="searchInput" type="text" class="form-control rounded" placeholder="Sản Phẩm Cần Tìm?" aria-label="Search"
-                aria-describedby="search-addon" />
-            <button type="submit" class="btn btn-outline-primary">Tìm Kiếm</button>
-        </div>
-    </form:form>
-    </div>
-
+<jsp:include page="hearder.jsp"/>
     <section class="banner_area1">
       <div class="container">
         <div class="banner_content d-md-flex justify-content-between align-items-center">
@@ -166,8 +62,8 @@
                         <tr>
                           <td>
                             <div class="media">
-                              <div class="d-flex">
-                                <img class="img-fluid" src="getProductPhoto/<c:out value='${cartItem.id}'/>"/>
+                              <div class="d-col col-lg-3">
+                                <img  class="img-fluid" src="./getProductPhoto/<c:out value='${cartItem.product.id}'/>"/>
                               </div>
                               <div class="media-body">
                                <a href="product/${cartItem.product.id}">
@@ -175,6 +71,7 @@
                                </a>
                               </div>
                             </div>
+
                           </td>
                           <td>
                             <h5><fmt:formatNumber value="${cartItem.product.price}" pattern="#,##0" /></h5>
@@ -189,20 +86,9 @@
                                 value="${cartItem.quantity}"
                                 title="Quantity:"
                                 class="input-text qty"
+                                readonly
                               />
-                              <button
-                                onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                class="increase items-count"
-                                type="button"
-                              >
-                                <i class="lnr lnr-chevron-up"></i>
-                              </button>
-                              <button
-                                onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 1 ) result.value--;return false;"
-                                class="reduced items-count"
-                                type="button"
-                              >
-                                <i class="lnr lnr-chevron-down"></i>
+
                               </button>
                             </div>
                           </td>
@@ -233,7 +119,7 @@
                           <td>
                             <div class="checkout_btn_inner">
                               <div class="continuer">
-                                <a class="gray_btn" href="#">Chọn Thêm Sản Phẩm Khác</a>
+                                <a class="gray_btn" href="/project-final-main">Chọn Thêm Sản Phẩm Khác</a>
                               </div>
                               <div class="buy">
                                 <a class="main_btn" href="checkout">Thanh Toán</a>

@@ -14,7 +14,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Spring_MVC_Project_Final" options="-endorseddirs $PROJECT_DIR$/target/endorsed" />
-      <module name="project-final-main" options="-endorseddirs E:\hocIT\DO_AN\project-final-main\target/endorsed" />
+      <module name="project-final-main" options="-endorseddirs &quot;C:\Users\tykak\OneDrive\Máy tính\New folder\project-final-main\target/endorsed&quot;" />
     </option>
   </component>
 </project>

@@ -22,6 +22,7 @@ public interface AccountRepository extends CrudRepository<AccountEntity, Long> {
     AccountEntity findById(int id);
 
     AccountEntity findByEmail(String username);
+
 }
 
 

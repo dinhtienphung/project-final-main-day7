@@ -31,7 +31,7 @@
 
 </head>
 <body>
-    <form:form action="addBanking" method="POST" modelAttribute="accountBanking">
+    <form:form action="addBankingCart" method="POST" modelAttribute="accountBanking">
         <div class="form-group">
                     <label class="control-label">Full Name (*)</label>
                     <input name="fullName" type="text" class="form-control"

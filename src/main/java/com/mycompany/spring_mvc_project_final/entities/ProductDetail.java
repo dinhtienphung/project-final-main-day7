@@ -10,6 +10,9 @@ public class ProductDetail {
     @Column (name = "id")
     private int id;
 
+    @Column (name = "information",length = 5000)
+    private String information;
+
     @Column (name = "product_batteries")
     private String product_batteries;
 
@@ -25,20 +28,10 @@ public class ProductDetail {
     private String product_screen;
     @Column (name = "product_system")
     private String product_system;
-    @Column (name = "product_image1")
-    private String product_image1;
-    @Column (name = "product_image2")
-    private String product_image2;
-    @Column (name = "product_image3")
-    private String product_image3;
-    @Column (name = "product_name")
-    private String product_name;
 
-    @OneToOne(cascade = CascadeType.ALL)
+
+    @OneToOne(mappedBy = "productDetails")
     private Product product;
-
-    public ProductDetail() {
-    }
 
     public int getId() {
         return id;
@@ -46,6 +39,14 @@ public class ProductDetail {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getInformation() {
+        return information;
+    }
+
+    public void setInformation(String information) {
+        this.information = information;
     }
 
     public String getProduct_batteries() {
@@ -102,38 +103,6 @@ public class ProductDetail {
 
     public void setProduct_system(String product_system) {
         this.product_system = product_system;
-    }
-
-    public String getProduct_image1() {
-        return product_image1;
-    }
-
-    public void setProduct_image1(String product_image1) {
-        this.product_image1 = product_image1;
-    }
-
-    public String getProduct_image2() {
-        return product_image2;
-    }
-
-    public void setProduct_image2(String product_image2) {
-        this.product_image2 = product_image2;
-    }
-
-    public String getProduct_image3() {
-        return product_image3;
-    }
-
-    public void setProduct_image3(String product_image3) {
-        this.product_image3 = product_image3;
-    }
-
-    public String getProduct_name() {
-        return product_name;
-    }
-
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
     }
 
     public Product getProduct() {

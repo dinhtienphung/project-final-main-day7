@@ -27,6 +27,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import static com.mycompany.spring_mvc_project_final.enums.Role.ROLE_ADMIN;
 import static com.mycompany.spring_mvc_project_final.enums.Role.ROLE_USER;
 
 @Controller

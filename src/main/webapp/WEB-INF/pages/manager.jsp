@@ -27,9 +27,8 @@
   <link rel="stylesheet" href="<c:url value="/resources/css/font-free-6.1.2-web/css/solid.css"/>">
   <link rel="stylesheet" href="<c:url value="/resources/css/manager.css"/>">
 </head>
-
+<jsp:include page="hearder.jsp"/>
     <body>
-   <jsp:include page="hearder.jsp"/>
       <section class="banner_area1">
         <div class="container">
           <div class="banner_content d-md-flex justify-content-between align-items-center">

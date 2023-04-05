@@ -17,6 +17,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.filter.CharacterEncodingFilter;
+
+import javax.servlet.Filter;
 
 @Configuration
 @EnableWebSecurity
@@ -32,6 +35,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return bCryptPasswordEncoder;
     }
 
+    @Bean
+    public Filter characterEncodingFilter() {
+        CharacterEncodingFilter filter = new CharacterEncodingFilter();
+        filter.setEncoding("UTF-8");
+        filter.setForceEncoding(true);
+        return filter;
+    }
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
@@ -43,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.csrf().disable();
-        http.authorizeRequests().antMatchers("/", "/login", "/logout", "/home","/add_image").permitAll();
+        http.authorizeRequests().antMatchers("/", "/login", "/logout", "/home").permitAll();
 
         http.authorizeRequests().antMatchers("/user/*").access("hasAnyRole('ROLE_ADMIN,ROLE_USER')")
                 .antMatchers("/admin/*").access("hasRole('ROLE_ADMIN')");
@@ -60,4 +71,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().logout().logoutUrl("/logout")
                 .logoutSuccessUrl("/").deleteCookies("JSESSIONID");
     }
+
+
+
+
 }

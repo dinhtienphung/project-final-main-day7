@@ -14,7 +14,7 @@ public class Product {
     @Column (name = "id")
     private int id;
 
-    @Column (name = "name")
+    @Column (name = "name",length = 5000)
     private String name;
 
     @Column (name = "price")
@@ -23,6 +23,22 @@ public class Product {
     @Column (name = "image")
     private byte [] image;
 
+    @Lob
+    @Column (name = "image1")
+    private byte [] image1;
+
+    @Lob
+    @Column (name = "image2")
+    private byte [] image2;
+
+    @Lob
+    @Column (name = "image3")
+    private byte [] image3;
+
+    @Lob
+    @Column (name = "banner")
+    private byte [] banner;
+
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "MM/dd/yyyy")
     private Date productDate;
@@ -30,7 +46,7 @@ public class Product {
     @Column (name = "quantity")
     private int quantity;
 
-    @Column (name = "description")
+    @Column (name = "description",length = 5000)
     private String description;
 
     @ManyToOne (fetch = FetchType.EAGER)
@@ -42,14 +58,13 @@ public class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<CartItem> cartItems;
 
-    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
-    private ProductDetail productDetail;
+    @OneToOne (cascade = {CascadeType.ALL})
+    @PrimaryKeyJoinColumn
+    private ProductDetail productDetails;
+
 
     @OneToMany(mappedBy = "product")
     private List<OrderDetail> orderDetails;
-
-    public Product() {
-    }
 
     public int getId() {
         return id;
@@ -81,6 +96,38 @@ public class Product {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public byte[] getImage1() {
+        return image1;
+    }
+
+    public void setImage1(byte[] image1) {
+        this.image1 = image1;
+    }
+
+    public byte[] getImage2() {
+        return image2;
+    }
+
+    public void setImage2(byte[] image2) {
+        this.image2 = image2;
+    }
+
+    public byte[] getImage3() {
+        return image3;
+    }
+
+    public void setImage3(byte[] image3) {
+        this.image3 = image3;
+    }
+
+    public byte[] getBanner() {
+        return banner;
+    }
+
+    public void setBanner(byte[] banner) {
+        this.banner = banner;
     }
 
     public Date getProductDate() {
@@ -123,12 +170,12 @@ public class Product {
         this.cartItems = cartItems;
     }
 
-    public ProductDetail getProductDetail() {
-        return productDetail;
+    public ProductDetail getProductDetails() {
+        return productDetails;
     }
 
-    public void setProductDetail(ProductDetail productDetail) {
-        this.productDetail = productDetail;
+    public void setProductDetails(ProductDetail productDetails) {
+        this.productDetails = productDetails;
     }
 
     public List<OrderDetail> getOrderDetails() {

@@ -2,15 +2,9 @@ package com.mycompany.spring_mvc_project_final.service;
 
 
 import com.mycompany.spring_mvc_project_final.entities.Cart;
-import com.mycompany.spring_mvc_project_final.entities.Product;
 import com.mycompany.spring_mvc_project_final.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @Service
 public class CartService {

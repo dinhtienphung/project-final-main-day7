@@ -2,15 +2,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <html>
 
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <link rel="icon" href="img/fev.png" type="image/png"/>
   <title>Home</title>
-
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="<c:url value="/resources/css/css/bootstrap.css"/>">
   <link rel="stylesheet" href="<c:url value="/resources/css/vendors/liner/style.css"/>">
@@ -32,166 +33,44 @@
 </head>
 
 <body>
-<jsp:include page="header.jsp" />
-  <header class="header_area">
-    <div class="main_menu">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light w-100">
+<jsp:include page="hearder.jsp"/>
 
-          <a class="navbar-brand logo_h" href="/project-final-main">
-            <img src="<c:url value='/resources/css/img/logo/Logo1_tp_icon.png'/>"/>
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-
-          <div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
-            <div class="row w-100 mr-0">
-              <div class="col-lg-7 pr-0">
-                <ul class="nav navbar-nav center_nav pull-right">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="/productphone">Trang Chủ</a>
-                  </li>
-
-                  <li class="nav-item submenu dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                      aria-expanded="false">Danh Mục</a>
-                    <ul class="dropdown-menu">
-                        <c:forEach var="category" items="${categoryList}" varStatus="index">
-                          <li class="nav-item">
-                            <a class="nav-link" href="product-list/categoryid=${category.id}page1">${category.name}</a>
-                          </li>
-                        </c:forEach>
-                    </ul>
-                  </li>
-                  <li class="nav-item submenu dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                      aria-expanded="false">Trang Quản Lý</a>
-                    <ul class="dropdown-menu">
-                      <li class="nav-item">
-                        <a class="nav-link" href="manager">Danh Mục Quản Lý</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </div>
-  </header>
-  <div class="search">
-    <form:form action="search" method="get">
-      <div class="input-group">
-          <input name="searchInput" type="text" class="form-control rounded" placeholder="Sản Phẩm Cần Tìm?" aria-label="Search"
-              aria-describedby="search-addon" />
-          <button type="submit" class="btn btn-outline-primary">Tìm Kiếm</button>
-      </div>
-    </form:form>
-  </div>
   <section class="feature-area section_gap_bottom_custom">
     <div class="container">
       <div class="row">
         <div class="col-lg-3 col-md-6">
           <div class="single-feature">
-            <a href="#">
+            <a href="product-list/categoryid=${1}page1">
             <img width="54px" src="<c:url value='/resources/css/img/logoDT.PNG'/>"/>
               <h3>Điện Thoại</h3>
             </a>
-              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                aria-expanded="false"></a>
-              <ul class="dropdown-menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="#">iPhone 14 Pro Max</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="single-product.html">iPhone 14 Plus</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="checkout.html">iPhone 13 Pro Max</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="cart.html">iPhone SE 2022</a>
-                </li>
-              </ul>
-
           </div>
         </div>
 
         <div class="col-lg-3 col-md-6">
           <div class="single-feature">
+            <a href="product-list/categoryid=${2}page1">
             <img src="<c:url value='/resources/css/img/logotablet3.PNG'/>"/>
               <h3>Tablet</h3>
-              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                aria-expanded="false"></a>
-              <ul class="dropdown-menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="#">iPad Pro</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="single-product.html">iPad Gen</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="checkout.html">Galaxy Tab</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="cart.html">Oppo Tab</a>
-                </li>
-              </ul>
-
-          </div>
+            </a>
+         </div>
         </div>
 
         <div class="col-lg-3 col-md-6">
           <div class="single-feature">
+            <a href="product-list/categoryid=${3}page1">
             <img style="width: 82px;" src="<c:url value='/resources/css/img/logoLaptop.PNG'/>"/>
               <h3>LapTop&MAC</h3>
-              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-              aria-expanded="false"></a>
-            <ul class="dropdown-menu">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Macbook Pro</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="single-product.html">Macbook Air</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="checkout.html">Dell</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="cart.html">LG</a>
-              </li>
-            </ul>
+            </a>
           </div>
         </div>
 
         <div class="col-lg-3 col-md-6">
           <div class="single-feature">
+            <a href="product-list/categoryid=${4}page1">
             <img style="width: 37px;" src="<c:url value='/resources/css/img/logodongho.PNG'/>"/>
               <h3>Đồng Hồ</h3>
-              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-              aria-expanded="false"></a>
-            <ul class="dropdown-menu">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Apple Wacth Series 7</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="single-product.html">Apple Wacth Series 8</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="checkout.html">Apple Wacth SE 2022</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="cart.html">Apple Wacth Ultra</a>
-              </li>
-            </ul>
+            </a>
           </div>
         </div>
       </div>
@@ -199,24 +78,27 @@
   </section>
 
   <section class="new_product_area section_gap_top section_gap_bottom_custom">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-12">
-          <div class="main_title">
-            <h2><span>Sản Phẩm Mới</span></h2>
-            <p>Bring called seed first of third give itself now ment</p>
-          </div>
+  <div class="row justify-content-center">
+    <!--  <div class="col-lg-12">
+        <div class="main_title">
+            <div class="img-logohome1">
+              <div class="img-logo1">
+                <img src="<c:url value='/resources/css/img/logohome1920x600-060323-min.png'/>"/>
+              </div>
+            </div>
         </div>
-      </div>
+      </div> -->
+ </div>
+    <div class="container">
 
         <div class="row">
           <c:forEach var="top1" items="${ListTop1}" varStatus="index">
-            <div class="col-lg-6">
-              <div class="new_product">
+            <div  class="col-lg-5">
+              <div style="margin-top:-120px"; class="new_product">
                 <h3 class="text-uppercase">${top1.name}</h3>
                 <div class="product-img">
                     <a href="product/${top1.id}">
-                      <img class="img-fluid" src="getProductPhoto/<c:out value='${top1.id}'/>"/>
+                      <img  class="img-fluid w-100"  src="getProductPhoto/<c:out value='${top1.id}'/>"/>
                     </a>
                 </div>
                 <h4><fmt:formatNumber value="${top1.price}" pattern="#,##0" /></h4>
@@ -229,10 +111,10 @@
 
                   <div class="row">
                       <c:forEach var="top4" items="${ListTop4}" varStatus="index">
-                        <div class="col-lg-6 col-md-6">
+                        <div  class="col-lg-6">
                           <div class="single-product">
                             <div class="product-img">
-                              <img class="img-fluid w-100" src="<c:url value='/resources/css/img/product/new-product/n1.jpg'/>"/>
+                              <img class="img-fluid" w-100 h-100" src="getProductPhoto/<c:out value='${top4.id}'/>"/>
                               <div class="p_icon">
                                 <a href="product/${top4.id}">
                                   <i class="ti-eye"></i>
@@ -248,7 +130,6 @@
                               </a>
                               <div class="mt-3">
                                 <span class="mr-4"><fmt:formatNumber value="${top4.price}" pattern="#,##0" /></span>
-                                <del>$35.00</del>
                               </div>
                             </div>
                           </div>
@@ -262,21 +143,20 @@
   </section>
 
   <section class="inspired_product_area section_gap_bottom_custom">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-12">
-          <div class="main_title">
-            <h2><span>Điện Thoại</span></h2>
-          </div>
+    <div  class="main_title">
+      <div class="img-logohome1">
+        <div class="img-logo1">
+          <img src="<c:url value='/resources/img/banner/banner1.webp'/>"/>
         </div>
       </div>
-
+    </div>
+    <div style="background-color: #ff685f; border-radius: 10px; padding-top: 20px; height: 75%"; class="container">
       <div class="row">
           <c:forEach var="product" items="${productListTopPhone}" varStatus="index">
             <div class="col-lg-3 col-md-6">
-              <div class="single-product">
+              <div  style="background-color: #ffff; padding: 10px 0px; border-radius: 10px"; class="single-product">
                 <div class="product-img">
-                  <img class="img-fluid w-100" src="<c:url value='/resources/css/img/product/inspired-product/i1.jpg'/>"/>
+                <img class="img-fluid" w-100" src="getProductPhoto/<c:out value='${product.id}'/>"/>
                   <div class="p_icon">
                     <a href="product/${product.id}">
                       <i class="ti-eye"></i>
@@ -292,138 +172,158 @@
                   </a>
                   <div class="mt-3">
                     <span class="mr-4"><fmt:formatNumber value="${product.price}" pattern="#,##0" /></span>
-                    <del>$35.00</del>
                   </div>
                 </div>
               </div>
             </div>
           </c:forEach>
       </div>
+      <div class="main_titles">
+             <a href="product-list/categoryid=${1}page1" class="d-block">Xem Tất Cả</a>
+      </div>
     </div>
   </section>
 
   <section class="inspired_product_area section_gap_bottom_custom">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-12">
-            <div class="main_title">
-              <h2><span>Tablet</span></h2>
-            </div>
+      <div  class="main_title">
+        <div class="img-logohome1">
+          <div class="img-logo1">
+            <img style=" height: 33%"; src="<c:url value='/resources/img/banner/banner2.PNG'/>"/>
           </div>
         </div>
-
-            <div class="row">
-                <c:forEach var="product" items="${showTopTapLet}" varStatus="index">
-                  <div class="col-lg-3 col-md-6">
-                    <div class="single-product">
-                      <div class="product-img">
-                        <img class="img-fluid w-100" src="<c:url value='/resources/css/img/product/inspired-product/i1.jpg'/>"/>
-                        <div class="p_icon">
-                          <a href="product/${product.id}">
-                            <i class="ti-eye"></i>
-                          </a>
-                          <a href="addToCart/${product.id}">
-                            <i class="ti-shopping-cart"></i>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="product-btm">
-                        <a href="product/${product.id}" class="d-block">
-                          <h4>${product.name}</h4>
-                        </a>
-                        <div class="mt-3">
-                          <span class="mr-4"><fmt:formatNumber value="${product.price}" pattern="#,##0" /></span>
-                          <del>$35.00</del>
-                        </div>
-                      </div>
+      </div>
+      <div style="background-color: #fedd38; border-radius: 10px; padding-top: 20px; height: 75%"; class="container">
+        <div class="row">
+            <c:forEach var="product" items="${productListTopTablet}" varStatus="index">
+              <div class="col-lg-3 col-md-6">
+                <div  style="background-color: #ffff; padding: 10px 0px; border-radius: 10px"; class="single-product">
+                  <div class="product-img">
+                  <img class="img-fluid" w-100" src="getProductPhoto/<c:out value='${product.id}'/>"/>
+                    <div class="p_icon">
+                      <a href="product/${product.id}">
+                        <i class="ti-eye"></i>
+                      </a>
+                      <a href="addToCart/${product.id}">
+                        <i class="ti-shopping-cart"></i>
+                      </a>
                     </div>
                   </div>
-                </c:forEach>
-            </div>
+                  <div class="product-btm">
+                    <a href="product/${product.id}" class="d-block">
+                      <h4>${product.name}</h4>
+                    </a>
+                    <div class="mt-3">
+                      <span class="mr-4"><fmt:formatNumber value="${product.price}" pattern="#,##0" /></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </c:forEach>
+        </div>
+        <div class="main_titles">
+             <a href="product-list/categoryid=${2}page1" class="d-block">Xem Thêm</a>
+        </div>
       </div>
-    </section>
+  </section>
+   <section class="inspired_product_area section_gap_bottom_custom">
+         <div  class="main_title">
+           <div class="img-logohome1">
+             <div class="img-logo1">
+               <img style=" height: 33%"; src="<c:url value='/resources/img/banner/banner3.png'/>"/>
+             </div>
+           </div>
+         </div>
+         <div style="background-color: #c62301; border-radius: 10px; padding-top: 20px; height: 75%"; class="container">
+           <div class="row">
+               <c:forEach var="product" items="${productListTopLaptop}" varStatus="index">
+                 <div class="col-lg-3 col-md-6">
+                   <div  style="background-color: #ffff; padding: 10px 0px; border-radius: 10px"; class="single-product">
+                     <div class="product-img">
+                     <img class="img-fluid" w-100" src="getProductPhoto/<c:out value='${product.id}'/>"/>
+                       <div class="p_icon">
+                         <a href="product/${product.id}">
+                           <i class="ti-eye"></i>
+                         </a>
+                         <a href="addToCart/${product.id}">
+                           <i class="ti-shopping-cart"></i>
+                         </a>
+                       </div>
+                     </div>
+                     <div class="product-btm">
+                       <a href="product/${product.id}" class="d-block">
+                         <h4>${product.name}</h4>
+                       </a>
+                       <div class="mt-3">
+                         <span class="mr-4"><fmt:formatNumber value="${product.price}" pattern="#,##0" /></span>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </c:forEach>
+           </div>
+           <div class="main_titles">
+                <a href="product-list/categoryid=${3}page1" class="d-block">Xem Thêm</a>
+           </div>
+         </div>
+   </section>
+   <section class="inspired_product_area section_gap_bottom_custom">
+         <div  class="main_title">
+           <div class="img-logohome1">
+             <div class="img-logo1">
+               <img style=" height: 33%"; src="<c:url value='/resources/img/banner/banner4.png'/>"/>
+             </div>
+           </div>
+         </div>
+         <div style="background-color: #092dc6; border-radius: 10px; padding-top: 20px; height: 75%"; class="container">
+           <div class="row">
+               <c:forEach var="product" items="${productListTopDH}" varStatus="index">
+                 <div class="col-lg-3 col-md-6">
+                   <div  style="background-color: #ffff; padding: 10px 0px; border-radius: 10px"; class="single-product">
+                     <div class="product-img">
+                     <img class="img-fluid" w-100" src="getProductPhoto/<c:out value='${product.id}'/>"/>
+                       <div class="p_icon">
+                         <a href="product/${product.id}">
+                           <i class="ti-eye"></i>
+                         </a>
+                         <a href="addToCart/${product.id}">
+                           <i class="ti-shopping-cart"></i>
+                         </a>
+                       </div>
+                     </div>
+                     <div class="product-btm">
+                       <a href="product/${product.id}" class="d-block">
+                         <h4>${product.name}</h4>
+                       </a>
+                       <div class="mt-3">
+                         <span class="mr-4"><fmt:formatNumber value="${product.price}" pattern="#,##0" /></span>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </c:forEach>
+           </div>
+           <div class="main_titles">
+                <a href="product-list/categoryid=${4}page1" class="d-block">Xem Thêm</a>
+           </div>
+         </div>
+   </section>
 
-    <section class="inspired_product_area section_gap_bottom_custom">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-12">
-                <div class="main_title">
-                  <h2><span>LapTop&Mac</span></h2>
-                </div>
-              </div>
-            </div>
+    <script src="<c:url value="/resources/css/js/jquery-3.2.1.min.js"/>"></script>
+        <script src="<c:url value="/resources/css/js/popper.js"/>"></script>
+        <script src="<c:url value="/resources/css/js/bootstrap.min.js"/>"></script>
+        <script src="<c:url value="/resources/css/js/stellar.js"/>"></script>
+        <script src="<c:url value="/resources/css/vendors/lightbox/simpleLightbox.min.js"/>"></script>
+        <script src="<c:url value="/resources/css/vendors/nice-select/js/jquery.nice-select.min.js"/>"></script>
+        <script src="<c:url value="/resources/css/vendors/isotope/imagesloaded.pkgd.min.js"/>"></script>
+        <script src="<c:url value="/resources/css/vendors/isotope/isotope-min.js"/>"></script>
+        <script src="<c:url value="/resources/css/vendors/owl-carousel/owl.carousel.min.js"/>"></script>
+        <script src="<c:url value="/resources/css/js/jquery.ajaxchimp.min.js"/>"></script>
+        <script src="<c:url value="/resources/css/js/mail-script.js"/>"></script>
+        <script src="<c:url value="/resources/css/vendors/jquery-ui/jquery-ui.js"/>"></script>
+        <script src="<c:url value="/resources/css/vendors/counter-up/jquery.waypoints.min.js"/>"></script>
+        <script src="<c:url value="/resources/css/vendors/counter-up/jquery.counterup.js"/>"></script>
+        <script src="<c:url value="/resources/css/js/theme.js"/>"></script>
 
-                <div class="row">
-                    <c:forEach var="product" items="${productListTopLaptop}" varStatus="index">
-                      <div class="col-lg-3 col-md-6">
-                        <div class="single-product">
-                          <div class="product-img">
-                            <img class="img-fluid w-100" src="<c:url value='/resources/css/img/product/inspired-product/i1.jpg'/>"/>
-                            <div class="p_icon">
-                              <a href="product/${product.id}">
-                                <i class="ti-eye"></i>
-                              </a>
-                              <a href="addToCart/${product.id}">
-                                <i class="ti-shopping-cart"></i>
-                              </a>
-                            </div>
-                          </div>
-                          <div class="product-btm">
-                            <a href="product/${product.id}" class="d-block">
-                              <h4>${product.name}</h4>
-                            </a>
-                            <div class="mt-3">
-                              <span class="mr-4"><fmt:formatNumber value="${product.price}" pattern="#,##0" /></span>
-                              <del>$35.00</del>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </c:forEach>
-                </div>
-          </div>
-    </section>
-
-    <section class="inspired_product_area section_gap_bottom_custom">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-12">
-                <div class="main_title">
-                  <h2><span>Đồng Hồ</span></h2>
-                </div>
-              </div>
-            </div>
-
-                <div class="row">
-                    <c:forEach var="product" items="${productListDH}" varStatus="index">
-                      <div class="col-lg-3 col-md-6">
-                        <div class="single-product">
-                          <div class="product-img">
-                            <img class="img-fluid w-100" src="<c:url value='/resources/css/img/product/inspired-product/i1.jpg'/>"/>
-                            <div class="p_icon">
-                              <a href="product/${product.id}">
-                                <i class="ti-eye"></i>
-                              </a>
-                              <a href="addToCart/${product.id}">
-                                <i class="ti-shopping-cart"></i>
-                              </a>
-                            </div>
-                          </div>
-                          <div class="product-btm">
-                            <a href="product/${product.id}" class="d-block">
-                              <h4>${product.name}</h4>
-                            </a>
-                            <div class="mt-3">
-                              <span class="mr-4"><fmt:formatNumber value="${product.price}" pattern="#,##0" /></span>
-                              <del>$35.00</del>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </c:forEach>
-                </div>
-          </div>
-    </section>
 
 </body>
 </html>

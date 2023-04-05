@@ -4,12 +4,17 @@ import com.mycompany.spring_mvc_project_final.entities.Category;
 import com.mycompany.spring_mvc_project_final.entities.Product;
 import com.mycompany.spring_mvc_project_final.service.CategoryService;
 import com.mycompany.spring_mvc_project_final.service.ProductService;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.List;
 
 @Controller
@@ -73,6 +78,16 @@ public class ListProductController {
         model.addAttribute("previous", previous);
         model.addAttribute("next", next);
         return "product-list";
+    }
+
+    @RequestMapping(value = "/product-list/getProductPhoto/{id}")
+    public void getStudentPhoto(HttpServletResponse response, @PathVariable("id") int id) throws Exception {
+        response.setContentType("image/jpeg");
+
+        Product p = productService.findById(id);
+        byte[] ph = p.getImage();
+        InputStream inputStream = new ByteArrayInputStream(ph);
+        IOUtils.copy(inputStream, response.getOutputStream());
     }
 
 }
